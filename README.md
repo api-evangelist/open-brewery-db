@@ -31,11 +31,12 @@ breweries, cideries, brewpubs, and bottleshops.
 
 #### Tags:
 
- - API
+ - Obdb, Random, Search, Autocomplete, Meta
 
 #### Properties
 
 - [Documentation]( https://www.openbrewerydb.org/)
+- [OpenAPI](properties/open-brewery-db-openapi.yml)
 
 ## Maintainers
 

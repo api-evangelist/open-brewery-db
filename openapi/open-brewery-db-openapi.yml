@@ -1,7 +1,10 @@
 openapi: 3.1.0
 info:
-  title: Open Brewery DB API
-  description: API for fetching brewery information
+  title: Open Brewery DB
+  description: |-
+
+    Open Brewery DB is a free dataset and API with public information on
+    breweries, cideries, brewpubs, and bottleshops. 
   version: 1.0.0
 servers:
   - url: https://api.openbrewerydb.org/v1
@@ -69,6 +72,7 @@ paths:
                 type: array
                 items:
                   type: object
+      tags: []
   /breweries/{obdb-id}:
     get:
       summary: Single Brewery
@@ -87,6 +91,8 @@ paths:
             application/json:
               schema:
                 type: object
+      tags:
+        - Obdb
   /breweries/random:
     get:
       summary: Random Brewery
@@ -108,6 +114,8 @@ paths:
                 type: array
                 items:
                   type: object
+      tags:
+        - Random
   /breweries/search:
     get:
       summary: Search Breweries
@@ -127,6 +135,8 @@ paths:
                 type: array
                 items:
                   type: object
+      tags:
+        - Search
   /breweries/autocomplete:
     get:
       summary: Autocomplete
@@ -146,6 +156,8 @@ paths:
                 type: array
                 items:
                   type: object
+      tags:
+        - Autocomplete
   /breweries/meta:
     get:
       summary: Metadata
@@ -166,3 +178,5 @@ paths:
             application/json:
               schema:
                 type: object
+      tags:
+        - Meta

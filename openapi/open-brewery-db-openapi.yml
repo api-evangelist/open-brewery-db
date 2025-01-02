@@ -1,0 +1,168 @@
+openapi: 3.1.0
+info:
+  title: Open Brewery DB API
+  description: API for fetching brewery information
+  version: 1.0.0
+servers:
+  - url: https://api.openbrewerydb.org/v1
+paths:
+  /breweries:
+    get:
+      summary: List Breweries
+      description: Returns a list of breweries with optional filters.
+      parameters:
+        - name: by_city
+          in: query
+          description: Filter by city name.
+          schema:
+            type: string
+        - name: by_state
+          in: query
+          description: Filter by state name (no abbreviations).
+          schema:
+            type: string
+        - name: by_country
+          in: query
+          description: Filter by country name.
+          schema:
+            type: string
+        - name: by_type
+          in: query
+          description: Filter by brewery type.
+          schema:
+            type: string
+            enum:
+              - micro
+              - nano
+              - regional
+              - brewpub
+              - large
+              - planning
+              - bar
+              - contract
+              - proprietor
+              - closed
+        - name: by_postal
+          in: query
+          description: Filter by postal code.
+          schema:
+            type: string
+        - name: per_page
+          in: query
+          description: Number of breweries per page (default 50, max 200).
+          schema:
+            type: integer
+            default: 50
+            maximum: 200
+        - name: page
+          in: query
+          description: Page number for pagination.
+          schema:
+            type: integer
+            default: 1
+      responses:
+        '200':
+          description: A list of breweries.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+  /breweries/{obdb-id}:
+    get:
+      summary: Single Brewery
+      description: Get details of a single brewery by ID.
+      parameters:
+        - name: obdb-id
+          in: path
+          required: true
+          description: The ID of the brewery.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Brewery details.
+          content:
+            application/json:
+              schema:
+                type: object
+  /breweries/random:
+    get:
+      summary: Random Brewery
+      description: Get a random brewery.
+      parameters:
+        - name: size
+          in: query
+          description: Number of breweries to return (default 1, max 50).
+          schema:
+            type: integer
+            default: 1
+            maximum: 50
+      responses:
+        '200':
+          description: Random brewery details.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+  /breweries/search:
+    get:
+      summary: Search Breweries
+      description: Search breweries by a term.
+      parameters:
+        - name: query
+          in: query
+          description: Search term.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Search results.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+  /breweries/autocomplete:
+    get:
+      summary: Autocomplete
+      description: Return a list of matching brewery names and IDs.
+      parameters:
+        - name: query
+          in: query
+          description: Search term.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Autocomplete results.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+  /breweries/meta:
+    get:
+      summary: Metadata
+      description: Returns metadata about breweries using filters.
+      parameters:
+        - name: by_city
+          in: query
+          schema:
+            type: string
+        - name: by_state
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Metadata details.
+          content:
+            application/json:
+              schema:
+                type: object

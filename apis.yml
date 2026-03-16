@@ -1,7 +1,6 @@
 aid: open-brewery-db
 url: >-
-
-  https://raw.githubusercontent.com/api-search/open-brewery-db/refs/heads/main/apis.yml
+  https://raw.githubusercontent.com/api-evangelist/open-brewery-db/refs/heads/main/apis.yml
 apis:
   - aid: open-brewery-db:open-brewery-db
     name: Open Brewery DB
@@ -32,7 +31,7 @@ type: Contract
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 created: '2024-11-13'
-modified: '2025-01-02'
+modified: '2026-03-16'
 position: Consuming
 description: >-
   Open Brewery DB is a comprehensive database that provides information on
@@ -45,5 +44,5 @@ description: >-
   growth of the industry by providing a centralized hub for brewery information.
 maintainers:
   - FN: Kin Lane
-    email: info@apievangelist.com
+    email: kin@apievangelist.com
 specificationVersion: '0.19'

@@ -72,7 +72,8 @@ paths:
                 type: array
                 items:
                   type: object
-      tags: []
+      tags:
+        - Breweries
   /breweries/{obdb-id}:
     get:
       summary: Open Brewery DB Single Brewery
@@ -180,3 +181,10 @@ paths:
                 type: object
       tags:
         - Meta
+tags:
+  - name: Autocomplete
+  - name: Breweries
+  - name: Meta
+  - name: Obdb
+  - name: Random
+  - name: Search

@@ -16,10 +16,9 @@ apis:
         type: Documentation
       - type: OpenAPI
         url: properties/open-brewery-db-openapi.yml
-    description: |-
-
-      Open Brewery DB is a free dataset and API with public information on
-      breweries, cideries, brewpubs, and bottleshops. 
+    description: >-
+      Open Brewery DB is a free dataset and API with public information on breweries,
+      cideries, brewpubs, and bottleshops.
 name: Open Brewery DB
 tags:
   - Beer
@@ -34,14 +33,12 @@ created: '2024-11-13'
 modified: '2026-03-16'
 position: Consuming
 description: >-
-  Open Brewery DB is a comprehensive database that provides information on
-  breweries and taprooms from around the world. It includes details such as
-  location, contact information, beer offerings, and more, making it a valuable
-  resource for beer enthusiasts and industry professionals alike. Users can
-  search and explore the database to discover new breweries, keep track of their
-  favorite spots, and stay up to date on the latest beer trends. Open Brewery DB
-  aims to connect people with the thriving craft beer community and support the
-  growth of the industry by providing a centralized hub for brewery information.
+  Open Brewery DB is a comprehensive database that provides information on breweries
+  and taprooms from around the world. It includes details such as location, contact
+  information, beer offerings, and more, making it a valuable resource for beer enthusiasts
+  and industry professionals alike. Users can search and explore the database to discover
+  new breweries, keep track of their favorite spots, and stay up to date on the latest
+  beer trends.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

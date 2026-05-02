@@ -1,8 +1,7 @@
 # Open Brewery DB (open-brewery-db)
 Open Brewery DB is a comprehensive database that provides information on breweries and taprooms from around the world. It includes details such as location, contact information, beer offerings, and more, making it a valuable resource for beer enthusiasts and industry professionals alike. Users can search and explore the database to discover new breweries, keep track of their favorite spots, and stay up to date on the latest beer trends. Open Brewery DB aims to connect people with the thriving craft beer community and support the growth of the industry by providing a centralized hub for brewery information.
 
-**URL:** [Visit APIs.json URL](
-https://raw.githubusercontent.com/api-search/open-brewery-db/refs/heads/main/apis.yml)
+**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/open-brewery-db/refs/heads/main/apis.yml)
 
 ## Scope
 
@@ -17,7 +16,7 @@ https://raw.githubusercontent.com/api-search/open-brewery-db/refs/heads/main/api
 ## Timestamps
 
 - **Created:** 2024-11-13 
-- **Modified:** 2025-01-02 
+- **Modified:** 2026-04-28 
 
 ## APIs
 
@@ -36,7 +35,7 @@ breweries, cideries, brewpubs, and bottleshops.
 #### Properties
 
 - [Documentation]( https://www.openbrewerydb.org/)
-- [OpenAPI](properties/open-brewery-db-openapi.yml)
+- [OpenAPI](openapi/open-brewery-db-openapi.yml)
 
 ## Maintainers
 

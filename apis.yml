@@ -1,5 +1,8 @@
 aid: open-brewery-db
 url: https://raw.githubusercontent.com/api-evangelist/open-brewery-db/refs/heads/main/apis.yml
+common:
+  - type: GitHubOrganization
+    url: https://github.com/openbrewerydb
 apis:
 - aid: open-brewery-db:open-brewery-db
   name: Open Brewery DB

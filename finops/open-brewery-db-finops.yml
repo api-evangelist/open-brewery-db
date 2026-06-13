@@ -10,8 +10,8 @@ provider: Open Brewery DB
 providerId: open-brewery-db
 publisherName: Open Brewery DB
 serviceCategory: API
-created: '2026-05-04'
-modified: '2026-05-04'
+created: '2026-06-13'
+modified: '2026-06-13'
 tags:
   - Beer
   - Bottle Shops
@@ -21,114 +21,98 @@ tags:
   - FinOps
   - Cost Management
   - FOCUS
-description: FinOps framework definition for the Open Brewery DB API surface. Provides a FOCUS-aligned
-  mapping for cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
+description: >-
+  Open Brewery DB has zero direct cost to API consumers. There are no usage fees, subscription charges,
+  or metered billing. The API is free and open-source, community-supported, and infrastructure is provided
+  by Cloudflare. FinOps considerations relate solely to self-hosting scenarios or the consumer's own
+  infrastructure costs when building applications on top of the API.
+costModel:
+  type: free
+  currency: USD
+  baseCost: 0.00
+  variableCost: 0.00
+  apiCallCost: 0.00
+  notes: >-
+    No cost is incurred by API consumers. The project is permanently committed to being free
+    and open-source. All endpoints, bulk downloads, and dataset access are free of charge.
 principles:
   - name: Visibility
-    description: Make API consumption costs visible to engineering, product, and finance teams in near
-      real-time.
-  - name: Allocation
-    description: Tag every chargeable API call with the consuming team, environment, application, and
-      feature so cost can be allocated.
+    description: >-
+      Track API consumption patterns in your own application to understand usage and plan for
+      potential self-hosting needs as volume grows.
   - name: Optimization
-    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
-      cost per useful unit of work.
+    description: >-
+      Implement local caching of API responses (data changes infrequently via community PRs)
+      and prefer bulk dataset downloads for high-volume read operations.
   - name: Accountability
-    description: Establish budget owners and chargeback or showback flows for each consuming team.
+    description: >-
+      While there is no direct cost, consuming teams should account for indirect infrastructure
+      costs (bandwidth, compute) when building production applications on the API.
 domains:
   - name: Understand Usage and Cost
     capabilities:
       - Data Ingestion
-      - Allocation
       - Reporting and Analytics
-      - Anomaly Management
-  - name: Quantify Business Value
-    capabilities:
-      - Planning and Estimating
-      - Forecasting
-      - Budgeting
-      - Benchmarking
-      - Unit Economics
   - name: Optimize Usage and Cost
     capabilities:
       - Architecting for Cloud
-      - Rate Optimization
       - Workload Optimization
-      - Cloud Sustainability
-      - Licensing and SaaS
   - name: Manage the FinOps Practice
     capabilities:
       - FinOps Practice Operations
       - FinOps Education and Enablement
-      - Invoicing and Chargeback
-      - Onboarding Workloads
-      - Intersecting Disciplines
 billingModel:
-  pricingCategory: Usage-Based
-  billingFrequency: Monthly
+  pricingCategory: Free
+  billingFrequency: none
   billingCurrency: USD
-  chargeCategories:
-    - Usage
-    - Purchase
-    - Tax
-    - Credit
-    - Adjustment
-  chargeFrequency: Recurring
+  chargeCategories: []
+  chargeFrequency: none
 focusColumns:
   ServiceName: Open Brewery DB
-  ServiceCategory: Developer Tools / API
+  ServiceCategory: API / Open Data
   ProviderName: Open Brewery DB
   PublisherName: Open Brewery DB
   InvoiceIssuerName: Open Brewery DB
-  PricingCategory: Usage-Based
+  PricingCategory: Free
   PricingUnit: request
   BillingCurrency: USD
   ChargeCategory: Usage
-meters:
-  - name: api_requests
-    description: Count of billable API requests
-    unit: request
-    aggregation: sum
-    dimensions:
-      - api
-      - endpoint
-      - tier
-      - region
-      - consumer
-  - name: data_egress
-    description: Bytes returned over the network in API responses
-    unit: GB
-    aggregation: sum
-    dimensions:
-      - api
-      - region
-      - consumer
-  - name: compute_seconds
-    description: Server-side compute consumed by the request, where applicable
-    unit: second
-    aggregation: sum
-    dimensions:
-      - api
-      - endpoint
-      - tier
+  BilledCost: 0.00
+optimizationRecommendations:
+  - recommendation: Use bulk dataset downloads for high-volume workloads
+    rationale: >-
+      Downloading the full dataset in CSV, JSON, or SQL format from GitHub and importing into
+      a local or managed database eliminates API dependency for read-heavy production workloads
+      and reduces load on the community-operated infrastructure.
+  - recommendation: Cache API responses locally
+    rationale: >-
+      Brewery data changes infrequently (community contributions via pull requests). Caching
+      responses for 24 hours or more is appropriate and reduces unnecessary repeat requests.
+  - recommendation: Use the metadata endpoint before paginating
+    rationale: >-
+      The /v1/breweries/meta endpoint returns total record counts for a given filter set.
+      Use it to determine pagination depth before issuing paginated list requests.
+  - recommendation: Self-host for production SLA requirements
+    rationale: >-
+      The API is MIT-licensed. Organizations requiring guaranteed uptime should deploy a
+      self-hosted instance using the freely available dataset and open-source application code.
 apis:
   - name: Open Brewery DB
-    baseURL: ''
+    baseURL: https://api.openbrewerydb.org/v1
     tags:
-      - Autocomplete
-      - Meta
-      - Obdb
-      - Random
+      - Breweries
       - Search
+      - Random
+      - Meta
     serviceName: Open Brewery DB
-    serviceCategory: API
+    serviceCategory: Open Data API
 unitEconomics:
   - name: Cost per 1K Requests
     metric: billed_cost / (api_requests / 1000)
-    target: TBD
+    target: '0.00'
   - name: Cost per Active Consumer
     metric: billed_cost / active_consumers
-    target: TBD
+    target: '0.00'
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

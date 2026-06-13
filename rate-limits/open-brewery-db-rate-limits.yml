@@ -3,8 +3,8 @@ specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
 provider: Open Brewery DB
 providerId: open-brewery-db
-created: '2026-05-04'
-modified: '2026-05-04'
+created: '2026-06-13'
+modified: '2026-06-13'
 tags:
   - Beer
   - Bottle Shops
@@ -12,78 +12,47 @@ tags:
   - Breweries
   - Cider
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Open Brewery DB API surface. Captures per-tier
-  quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to
-  be replaced with published provider limits.
+description: >-
+  Open Brewery DB does not impose documented rate limits. The provider explicitly states the API
+  has no rate limits, making it suitable for web apps, student projects, and live integrations.
+  The service processes approximately 720,000 API requests per week across all consumers.
+rateLimitsPublished: false
+rateLimitsNotes: >-
+  The Open Brewery DB API has no published rate limits. The FAQ and documentation explicitly state
+  there are no rate limits. The project is community-supported with no SLA. For high-volume or
+  production workloads, bulk dataset downloads in CSV, JSON, and SQL are recommended as an alternative
+  to repeated API calls.
 headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+  limit: null
+  remaining: null
+  reset: null
+  retryAfter: null
+  policy: null
 responseCodes:
-  throttled: 429
-  quotaExceeded: 429
+  throttled: null
+  quotaExceeded: null
   serviceUnavailable: 503
-limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Open Brewery DB
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Open Brewery DB
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Open Brewery DB
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Open Brewery DB
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Open Brewery DB
+limits: []
+endpointConstraints:
+  - endpoint: /v1/breweries
+    parameter: per_page
+    default: 50
+    max: 200
+    description: Maximum results per page when listing breweries
+  - endpoint: /v1/breweries/random
+    parameter: size
+    default: 1
+    max: 50
+    description: Maximum number of random breweries returned in a single request
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: No Published Rate Limits
+    description: >-
+      The API provider explicitly states there are no rate limits. Consumers should still implement
+      reasonable request cadence and caching to be good citizens of the community-operated service.
+  - name: Responsible Use
+    description: >-
+      The maintainers recommend using the API for personal projects and caution that no SLA is
+      provided. High-volume commercial workloads should use the bulk dataset downloads instead.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

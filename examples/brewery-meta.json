@@ -1,0 +1,43 @@
+{
+  "total": 11744,
+  "page": 1,
+  "per_page": 50,
+  "by_state": {
+    "California": 919,
+    "Washington": 529,
+    "Colorado": 449,
+    "New York": 419,
+    "Michigan": 375,
+    "Texas": 352,
+    "Pennsylvania": 345,
+    "North Carolina": 311,
+    "Ohio": 303,
+    "Oregon": 295
+  },
+  "by_country": {
+    "United States": 8200,
+    "Germany": 1449,
+    "Belgium": 478,
+    "Australia": 514,
+    "Canada": 283,
+    "New Zealand": 243,
+    "Netherlands": 76,
+    "Ireland": 70,
+    "Finland": 68,
+    "South Korea": 61
+  },
+  "by_type": {
+    "micro": 5788,
+    "brewpub": 3910,
+    "planning": 639,
+    "closed": 634,
+    "regional": 239,
+    "contract": 210,
+    "proprietor": 67,
+    "taproom": 47,
+    "bar": 43,
+    "large": 135,
+    "nano": 21,
+    "cidery": 7
+  }
+}

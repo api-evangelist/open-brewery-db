@@ -1,0 +1,111 @@
+vocabulary:
+  - term: brewery
+    definition: >-
+      A facility that produces beer, ale, cider, or other fermented beverages
+      for sale or consumption. In Open Brewery DB this also includes cideries,
+      brewpubs, bottleshops, and taprooms.
+
+  - term: brewery_type
+    definition: >-
+      Classification of a brewery based on its size, license type, or business
+      model. Open Brewery DB recognises the following types: micro, nano,
+      regional, brewpub, large, planning, bar, contract, proprietor, taproom,
+      cidery, and closed.
+
+  - term: micro
+    definition: >-
+      A microbrewery that produces fewer than 15,000 barrels per year with
+      25% or more of its beer sold off-site.
+
+  - term: nano
+    definition: >-
+      An extremely small brewery that typically produces fewer than 500 barrels
+      per year.
+
+  - term: regional
+    definition: >-
+      A regional brewery that distributes beyond its local area and typically
+      produces between 15,000 and 6,000,000 barrels per year.
+
+  - term: brewpub
+    definition: >-
+      A restaurant or bar that brews its own beer on-site for consumption on
+      the premises.
+
+  - term: large
+    definition: >-
+      A large-scale brewery producing more than 6,000,000 barrels per year.
+
+  - term: planning
+    definition: >-
+      A brewery that is in the planning or licensing phase and is not yet
+      producing beer.
+
+  - term: bar
+    definition: >-
+      A bar or taproom that serves beer but may not brew on-site.
+
+  - term: contract
+    definition: >-
+      A brewery that hires another brewery to produce its beer under its own
+      brand and recipe.
+
+  - term: proprietor
+    definition: >-
+      A proprietary brewery that brews within another brewery's facility under
+      a separate license.
+
+  - term: taproom
+    definition: >-
+      A brewery that sells the majority of its beer on-site, typically with
+      little or no food service.
+
+  - term: cidery
+    definition: >-
+      A facility that produces hard cider from fermented apple or other fruit
+      juice.
+
+  - term: closed
+    definition: >-
+      A brewery that has permanently ceased operations.
+
+  - term: obdb-id
+    definition: >-
+      The unique identifier assigned to each brewery by Open Brewery DB.
+      Format is a UUID (v4), e.g. "ae7b3174-8be8-4d53-a3a5-9b8240970eea".
+
+  - term: address_1
+    definition: >-
+      The primary line of a brewery's street address. Replaces the deprecated
+      "street" field.
+
+  - term: state_province
+    definition: >-
+      The state, province, or regional subdivision of the brewery's location.
+      Replaces the deprecated "state" field and supports international addresses.
+
+  - term: by_dist
+    definition: >-
+      A query parameter that accepts a "latitude,longitude" pair and filters
+      results to breweries near that geographic point, sorted by distance.
+
+  - term: by_ids
+    definition: >-
+      A query parameter accepting a comma-separated list of OBDB IDs for
+      bulk retrieval of specific brewery records.
+
+  - term: sort
+    definition: >-
+      A query parameter that controls result ordering. Prefix a field name
+      with "asc:" for ascending or "desc:" for descending order. Multiple
+      fields may be separated by commas.
+
+  - term: autocomplete
+    definition: >-
+      An endpoint that returns lightweight brewery ID and name pairs for use
+      in typeahead or autocomplete UI components. Returns up to 15 results.
+
+  - term: meta
+    definition: >-
+      An endpoint that returns aggregate counts of breweries grouped by
+      state/province, country, and type, along with the total record count.

@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/open-brewery-db/main/json-schema/brewery.json",
+  "title": "Brewery",
+  "description": "A brewery, cidery, brewpub, or bottleshop record from Open Brewery DB.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the brewery (Open Brewery DB ID).",
+      "examples": ["ae7b3174-8be8-4d53-a3a5-9b8240970eea"]
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the brewery.",
+      "examples": ["Dogfish Head Craft Brewery"]
+    },
+    "brewery_type": {
+      "type": "string",
+      "description": "Type classification of the brewery.",
+      "enum": [
+        "micro",
+        "nano",
+        "regional",
+        "brewpub",
+        "large",
+        "planning",
+        "bar",
+        "contract",
+        "proprietor",
+        "taproom",
+        "cidery",
+        "closed"
+      ],
+      "examples": ["micro"]
+    },
+    "address_1": {
+      "type": ["string", "null"],
+      "description": "Primary street address.",
+      "examples": ["6 Cannery Village Center"]
+    },
+    "address_2": {
+      "type": ["string", "null"],
+      "description": "Secondary address line.",
+      "examples": [null]
+    },
+    "address_3": {
+      "type": ["string", "null"],
+      "description": "Tertiary address line.",
+      "examples": [null]
+    },
+    "city": {
+      "type": "string",
+      "description": "City where the brewery is located.",
+      "examples": ["Milton"]
+    },
+    "state_province": {
+      "type": ["string", "null"],
+      "description": "State or province (preferred; replaces deprecated state field).",
+      "examples": ["Delaware"]
+    },
+    "postal_code": {
+      "type": ["string", "null"],
+      "description": "Postal or ZIP code.",
+      "examples": ["19968-1674"]
+    },
+    "country": {
+      "type": "string",
+      "description": "Country where the brewery is located.",
+      "examples": ["United States"]
+    },
+    "longitude": {
+      "type": ["number", "null"],
+      "description": "Longitude coordinate (WGS84 decimal degrees).",
+      "examples": [-75.1241]
+    },
+    "latitude": {
+      "type": ["number", "null"],
+      "description": "Latitude coordinate (WGS84 decimal degrees).",
+      "examples": [38.9974]
+    },
+    "phone": {
+      "type": ["string", "null"],
+      "description": "Phone number (format varies by country).",
+      "examples": ["3026843156"]
+    },
+    "website_url": {
+      "type": ["string", "null"],
+      "format": "uri",
+      "description": "Website URL of the brewery.",
+      "examples": ["https://www.dogfish.com"]
+    },
+    "state": {
+      "type": ["string", "null"],
+      "deprecated": true,
+      "description": "Deprecated. Use state_province instead.",
+      "examples": ["Delaware"]
+    },
+    "street": {
+      "type": ["string", "null"],
+      "deprecated": true,
+      "description": "Deprecated. Use address_1 instead.",
+      "examples": ["6 Cannery Village Center"]
+    }
+  },
+  "required": ["id", "name", "brewery_type", "city", "country"]
+}

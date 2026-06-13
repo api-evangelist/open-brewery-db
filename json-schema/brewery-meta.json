@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/open-brewery-db/main/json-schema/brewery-meta.json",
+  "title": "BreweryMeta",
+  "description": "Metadata and aggregate counts about the Open Brewery DB dataset.",
+  "type": "object",
+  "properties": {
+    "total": {
+      "type": "integer",
+      "description": "Total number of brewery records in the dataset.",
+      "examples": [11744]
+    },
+    "page": {
+      "type": "integer",
+      "description": "Current page number.",
+      "examples": [1]
+    },
+    "per_page": {
+      "type": "integer",
+      "description": "Number of records per page.",
+      "examples": [50]
+    },
+    "by_state": {
+      "type": "object",
+      "description": "Map of state or province name to brewery count.",
+      "additionalProperties": {
+        "type": "integer"
+      },
+      "examples": [{ "California": 919, "Texas": 352, "Washington": 529 }]
+    },
+    "by_country": {
+      "type": "object",
+      "description": "Map of country name to brewery count.",
+      "additionalProperties": {
+        "type": "integer"
+      },
+      "examples": [{ "United States": 8200, "Germany": 1449, "Belgium": 478 }]
+    },
+    "by_type": {
+      "type": "object",
+      "description": "Map of brewery type to brewery count.",
+      "additionalProperties": {
+        "type": "integer"
+      },
+      "examples": [{ "micro": 5788, "brewpub": 3910, "planning": 639 }]
+    }
+  },
+  "required": ["total", "page", "per_page"]
+}

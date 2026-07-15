@@ -1,6 +1,8 @@
 aid: open-brewery-db
 url: https://raw.githubusercontent.com/api-evangelist/open-brewery-db/refs/heads/main/apis.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/open-brewery-db-agentic-access.yml
   - type: DomainSecurity
     url: security/open-brewery-db-domain-security.yml
   - type: Website

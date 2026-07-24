@@ -1,0 +1,502 @@
+openapi: 3.1.0
+info:
+  title: Open Brewery DB Breweries API
+  description: 'Open Brewery DB is a free dataset and API with public information on
+
+    breweries, cideries, brewpubs, and bottleshops. The database contains
+
+    11,000+ entries across 23+ countries and 212+ states and regions.
+
+    No API key, authentication, or registration is required.
+
+    '
+  version: 1.0.0
+  contact:
+    url: https://www.openbrewerydb.org/
+  license:
+    name: MIT
+    url: https://github.com/openbrewerydb/openbrewerydb/blob/master/LICENSE
+servers:
+- url: https://api.openbrewerydb.org/v1
+tags:
+- name: Breweries
+  description: Brewery listing, retrieval, search, autocomplete, and metadata operations.
+paths:
+  /breweries:
+    get:
+      operationId: listBreweries
+      summary: List Breweries
+      description: Returns a list of breweries. Supports filtering by city, state, country, type, postal code, name, IDs, and geographic distance. Results are paginated; default page size is 50, maximum is 200. Results can be sorted by one or more fields.
+      parameters:
+      - name: by_city
+        in: query
+        description: Filter by city name (case-insensitive).
+        schema:
+          type: string
+        example: San Diego
+      - name: by_country
+        in: query
+        description: Filter by country name (case-insensitive).
+        schema:
+          type: string
+        example: United States
+      - name: by_dist
+        in: query
+        description: 'Filter by geographic distance from a lat,lng point. Format: "lat,lng". Returns results sorted by distance ascending.'
+        schema:
+          type: string
+        example: 38.8977,−77.0365
+      - name: by_ids
+        in: query
+        description: Filter by a comma-separated list of brewery IDs.
+        schema:
+          type: string
+        example: b54b16e1-ac3b-4bff-a11f-f7ae9ddc27e0,5494659b-aece-42a4-b7b1-b5a98cf12e40
+      - name: by_name
+        in: query
+        description: Filter by brewery name (case-insensitive partial match).
+        schema:
+          type: string
+        example: Dogfish
+      - name: by_state
+        in: query
+        description: Filter by state or province name (no abbreviations).
+        schema:
+          type: string
+        example: California
+      - name: by_postal
+        in: query
+        description: Filter by postal code (US ZIP codes and international).
+        schema:
+          type: string
+        example: '44107'
+      - name: by_type
+        in: query
+        description: Filter by brewery type.
+        schema:
+          type: string
+          enum:
+          - micro
+          - nano
+          - regional
+          - brewpub
+          - large
+          - planning
+          - bar
+          - contract
+          - proprietor
+          - taproom
+          - cidery
+          - closed
+        example: micro
+      - name: page
+        in: query
+        description: Page number for pagination (1-indexed).
+        schema:
+          type: integer
+          default: 1
+          minimum: 1
+        example: 1
+      - name: per_page
+        in: query
+        description: Number of breweries per page (default 50, max 200).
+        schema:
+          type: integer
+          default: 50
+          minimum: 1
+          maximum: 200
+        example: 50
+      - name: sort
+        in: query
+        description: Sort results by one or more fields. Prefix with "asc:" or "desc:" to control direction. Multiple fields separated by commas.
+        schema:
+          type: string
+        example: asc:name
+      responses:
+        '200':
+          description: A paginated list of brewery records.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Brewery'
+              example:
+              - id: ae7b3174-8be8-4d53-a3a5-9b8240970eea
+                name: Dogfish Head Craft Brewery
+                brewery_type: micro
+                address_1: 6 Cannery Village Center
+                address_2: null
+                address_3: null
+                city: Milton
+                state_province: Delaware
+                postal_code: 19968-1674
+                country: United States
+                longitude: -75.1241
+                latitude: 38.9974
+                phone: '3026843156'
+                website_url: https://www.dogfish.com
+                state: Delaware
+                street: 6 Cannery Village Center
+      tags:
+      - Breweries
+  /breweries/{obdb-id}:
+    get:
+      operationId: getBrewery
+      summary: Get Brewery
+      description: Get full details of a single brewery by its Open Brewery DB ID.
+      parameters:
+      - name: obdb-id
+        in: path
+        required: true
+        description: The unique Open Brewery DB ID for the brewery.
+        schema:
+          type: string
+        example: b54b16e1-ac3b-4bff-a11f-f7ae9ddc27e0
+      responses:
+        '200':
+          description: Full brewery record.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Brewery'
+              example:
+                id: b54b16e1-ac3b-4bff-a11f-f7ae9ddc27e0
+                name: MadTree Brewing 2.0
+                brewery_type: regional
+                address_1: 5164 Kennedy Ave
+                address_2: null
+                address_3: null
+                city: Cincinnati
+                state_province: Ohio
+                postal_code: 45213-1566
+                country: United States
+                longitude: -84.4154
+                latitude: 39.1776
+                phone: '5138368733'
+                website_url: https://madtreebrewing.com
+                state: Ohio
+                street: 5164 Kennedy Ave
+        '404':
+          description: Brewery not found.
+      tags:
+      - Breweries
+  /breweries/random:
+    get:
+      operationId: getRandomBrewery
+      summary: Get Random Brewery
+      description: Returns one or more random brewery records. Use the size parameter to request multiple random breweries at once (max 50).
+      parameters:
+      - name: size
+        in: query
+        description: Number of random breweries to return (default 1, max 50).
+        schema:
+          type: integer
+          default: 1
+          minimum: 1
+          maximum: 50
+        example: 3
+      responses:
+        '200':
+          description: One or more random brewery records.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Brewery'
+      tags:
+      - Breweries
+  /breweries/search:
+    get:
+      operationId: searchBreweries
+      summary: Search Breweries
+      description: Full-text search across brewery names and other text fields. Returns breweries matching the query term. Results are paginated.
+      parameters:
+      - name: query
+        in: query
+        required: true
+        description: Search term to match against brewery names and other text fields.
+        schema:
+          type: string
+        example: dog
+      - name: per_page
+        in: query
+        description: Number of results per page (default 50, max 200).
+        schema:
+          type: integer
+          default: 50
+          minimum: 1
+          maximum: 200
+        example: 10
+      - name: page
+        in: query
+        description: Page number for pagination (1-indexed).
+        schema:
+          type: integer
+          default: 1
+          minimum: 1
+        example: 1
+      responses:
+        '200':
+          description: Search results as a list of brewery records.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Brewery'
+      tags:
+      - Breweries
+  /breweries/autocomplete:
+    get:
+      operationId: autocompleteBreweries
+      summary: Autocomplete Breweries
+      description: Returns a lightweight list of brewery IDs and names matching the query. Optimized for use in autocomplete/typeahead UI components. Returns up to 15 results.
+      parameters:
+      - name: query
+        in: query
+        required: true
+        description: Search term to match against brewery names.
+        schema:
+          type: string
+          minLength: 1
+        example: dog
+      responses:
+        '200':
+          description: List of matching brewery ID and name pairs.
+          content:
+            application/json:
+              schema:
+                type: array
+                maxItems: 15
+                items:
+                  $ref: '#/components/schemas/BreweryAutocomplete'
+              example:
+              - id: b54b16e1-ac3b-4bff-a11f-f7ae9ddc27e0
+                name: Dogfish Head Craft Brewery
+              - id: ae7b3174-8be8-4d53-a3a5-9b8240970eea
+                name: Dog Days Brewing
+      tags:
+      - Breweries
+  /breweries/meta:
+    get:
+      operationId: getBreweriesMeta
+      summary: Get Breweries Metadata
+      description: 'Returns aggregate metadata about the brewery dataset: total count and breakdowns by state/province, country, and brewery type. Accepts the same filter parameters as the list endpoint to scope the metadata to a subset of breweries.'
+      parameters:
+      - name: by_city
+        in: query
+        description: Scope metadata to breweries in this city.
+        schema:
+          type: string
+        example: Portland
+      - name: by_country
+        in: query
+        description: Scope metadata to breweries in this country.
+        schema:
+          type: string
+        example: United States
+      - name: by_name
+        in: query
+        description: Scope metadata to breweries matching this name.
+        schema:
+          type: string
+      - name: by_state
+        in: query
+        description: Scope metadata to breweries in this state or province.
+        schema:
+          type: string
+        example: Oregon
+      - name: by_postal
+        in: query
+        description: Scope metadata to breweries with this postal code.
+        schema:
+          type: string
+      - name: by_type
+        in: query
+        description: Scope metadata to breweries of this type.
+        schema:
+          type: string
+          enum:
+          - micro
+          - nano
+          - regional
+          - brewpub
+          - large
+          - planning
+          - bar
+          - contract
+          - proprietor
+          - taproom
+          - cidery
+          - closed
+      responses:
+        '200':
+          description: Metadata and aggregate counts for the brewery dataset.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BreweryMeta'
+              example:
+                total: 11744
+                page: 1
+                per_page: 50
+                by_state:
+                  California: 919
+                  Texas: 352
+                  Washington: 529
+                by_country:
+                  United States: 8200
+                  Germany: 1449
+                  Belgium: 478
+                by_type:
+                  micro: 5788
+                  brewpub: 3910
+                  planning: 639
+      tags:
+      - Breweries
+components:
+  schemas:
+    BreweryAutocomplete:
+      type: object
+      description: Abbreviated brewery record returned by autocomplete endpoint.
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the brewery.
+          example: ae7b3174-8be8-4d53-a3a5-9b8240970eea
+        name:
+          type: string
+          description: Name of the brewery.
+          example: Dogfish Head Craft Brewery
+    Brewery:
+      type: object
+      description: A brewery, cidery, brewpub, or bottleshop record.
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the brewery (Open Brewery DB ID).
+          example: ae7b3174-8be8-4d53-a3a5-9b8240970eea
+        name:
+          type: string
+          description: Name of the brewery.
+          example: Dogfish Head Craft Brewery
+        brewery_type:
+          type: string
+          description: Type classification of the brewery.
+          enum:
+          - micro
+          - nano
+          - regional
+          - brewpub
+          - large
+          - planning
+          - bar
+          - contract
+          - proprietor
+          - taproom
+          - cidery
+          - closed
+          example: micro
+        address_1:
+          type: string
+          nullable: true
+          description: Primary street address.
+          example: 6 Cannery Village Center
+        address_2:
+          type: string
+          nullable: true
+          description: Secondary address line.
+          example: null
+        address_3:
+          type: string
+          nullable: true
+          description: Tertiary address line.
+          example: null
+        city:
+          type: string
+          description: City where the brewery is located.
+          example: Milton
+        state_province:
+          type: string
+          nullable: true
+          description: State or province (preferred field, replaces deprecated state).
+          example: Delaware
+        postal_code:
+          type: string
+          nullable: true
+          description: Postal or ZIP code.
+          example: 19968-1674
+        country:
+          type: string
+          description: Country where the brewery is located.
+          example: United States
+        longitude:
+          type: number
+          format: float
+          nullable: true
+          description: Longitude coordinate.
+          example: -75.1241
+        latitude:
+          type: number
+          format: float
+          nullable: true
+          description: Latitude coordinate.
+          example: 38.9974
+        phone:
+          type: string
+          nullable: true
+          description: Phone number.
+          example: '3026843156'
+        website_url:
+          type: string
+          format: uri
+          nullable: true
+          description: Website URL of the brewery.
+          example: https://www.dogfish.com
+        state:
+          type: string
+          nullable: true
+          deprecated: true
+          description: Deprecated. Use state_province instead.
+          example: Delaware
+        street:
+          type: string
+          nullable: true
+          deprecated: true
+          description: Deprecated. Use address_1 instead.
+          example: 6 Cannery Village Center
+    BreweryMeta:
+      type: object
+      description: Metadata and aggregate counts about the brewery dataset.
+      properties:
+        total:
+          type: integer
+          description: Total number of brewery records.
+          example: 11744
+        page:
+          type: integer
+          description: Current page number.
+          example: 1
+        per_page:
+          type: integer
+          description: Number of records per page.
+          example: 50
+        by_state:
+          type: object
+          description: Count of breweries by state or province.
+          additionalProperties:
+            type: integer
+        by_country:
+          type: object
+          description: Count of breweries by country.
+          additionalProperties:
+            type: integer
+        by_type:
+          type: object
+          description: Count of breweries by brewery type.
+          additionalProperties:
+            type: integer

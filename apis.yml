@@ -24,27 +24,17 @@ common:
   - type: FinOps
     url: https://raw.githubusercontent.com/api-evangelist/open-brewery-db/refs/heads/main/finops/open-brewery-db-finops.yml
 apis:
-  - aid: open-brewery-db:open-brewery-db
-    name: Open Brewery DB
-    tags:
-      - Breweries
-      - Cideries
-      - Brew Pubs
-      - Bottle Shops
-      - Search
-      - Random
-      - Meta
-    humanURL: https://www.openbrewerydb.org/
-    properties:
-      - url: https://www.openbrewerydb.org/documentation
-        type: Documentation
-      - type: OpenAPI
-        url: openapi/open-brewery-db-openapi.yml
-    description: >-
-      Open Brewery DB is a free dataset and API with public information on breweries, cideries, brewpubs, and
-      bottleshops. The API provides access to 11,000+ brewery records across 23+ countries with no authentication
-      or API key required. Endpoints support listing, searching, filtering by city/state/country/type, random
-      selection, and metadata queries.
+- aid: open-brewery-db:open-brewery-db-breweries-api
+  name: Open Brewery DB Breweries API
+  description: Brewery listing, retrieval, search, autocomplete, and metadata operations.
+  humanURL: https://www.openbrewerydb.org/
+  tags:
+  - Breweries
+  properties:
+  - type: OpenAPI
+    url: openapi/open-brewery-db-breweries-api-openapi.yml
+  - type: Documentation
+    url: https://www.openbrewerydb.org/documentation
 name: Open Brewery DB
 tags:
   - Beer
@@ -53,7 +43,19 @@ tags:
   - Breweries
   - Cider
 kind: contract
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: free
+  onboarding: open
+  trial: false
+  try_now: true
+  public: true
+  label: Free · Open access
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/open-brewery-db.png
 access: 3rd-Party
 created: '2024-11-13'
 modified: '2026-06-13'

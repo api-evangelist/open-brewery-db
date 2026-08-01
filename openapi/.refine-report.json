@@ -1,0 +1,14 @@
+{
+  "provider": "open-brewery-db",
+  "sources": [
+    "open-brewery-db-breweries-api-openapi.yml"
+  ],
+  "outputs": [
+    "open-brewery-db-breweries-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

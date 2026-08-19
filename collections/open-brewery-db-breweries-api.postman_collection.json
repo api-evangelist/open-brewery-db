@@ -1,0 +1,746 @@
+{
+  "item": [
+    {
+      "id": "1845fd45-ef95-486b-83fc-edc509795eae",
+      "name": "Breweries",
+      "description": {
+        "content": "Brewery listing, retrieval, search, autocomplete, and metadata operations.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "10399ebc-6b00-4280-9f44-6ab83c978f18",
+          "name": "List Breweries",
+          "request": {
+            "name": "List Breweries",
+            "description": {
+              "content": "Returns a list of breweries. Supports filtering by city, state, country, type, postal code, name, IDs, and geographic distance. Results are paginated; default page size is 50, maximum is 200. Results can be sorted by one or more fields.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "breweries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "by_city",
+                  "value": "<string>",
+                  "description": "Filter by city name (case-insensitive)."
+                },
+                {
+                  "disabled": false,
+                  "key": "by_country",
+                  "value": "<string>",
+                  "description": "Filter by country name (case-insensitive)."
+                },
+                {
+                  "disabled": false,
+                  "key": "by_dist",
+                  "value": "<string>",
+                  "description": "Filter by geographic distance from a lat,lng point. Format: \"lat,lng\". Returns results sorted by distance ascending."
+                },
+                {
+                  "disabled": false,
+                  "key": "by_ids",
+                  "value": "<string>",
+                  "description": "Filter by a comma-separated list of brewery IDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "by_name",
+                  "value": "<string>",
+                  "description": "Filter by brewery name (case-insensitive partial match)."
+                },
+                {
+                  "disabled": false,
+                  "key": "by_state",
+                  "value": "<string>",
+                  "description": "Filter by state or province name (no abbreviations)."
+                },
+                {
+                  "disabled": false,
+                  "key": "by_postal",
+                  "value": "<string>",
+                  "description": "Filter by postal code (US ZIP codes and international)."
+                },
+                {
+                  "disabled": false,
+                  "key": "by_type",
+                  "value": "<string>",
+                  "description": "Filter by brewery type."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for pagination (1-indexed)."
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "50",
+                  "description": "Number of breweries per page (default 50, max 200)."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sort results by one or more fields. Prefix with \"asc:\" or \"desc:\" to control direction. Multiple fields separated by commas."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "62c2f58e-542d-44a8-b3de-337c915ff230",
+              "name": "A paginated list of brewery records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "breweries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "by_city",
+                      "value": "San Diego"
+                    },
+                    {
+                      "key": "by_country",
+                      "value": "United States"
+                    },
+                    {
+                      "key": "by_dist",
+                      "value": "38.8977,−77.0365"
+                    },
+                    {
+                      "key": "by_ids",
+                      "value": "b54b16e1-ac3b-4bff-a11f-f7ae9ddc27e0,5494659b-aece-42a4-b7b1-b5a98cf12e40"
+                    },
+                    {
+                      "key": "by_name",
+                      "value": "Dogfish"
+                    },
+                    {
+                      "key": "by_state",
+                      "value": "California"
+                    },
+                    {
+                      "key": "by_postal",
+                      "value": "44107"
+                    },
+                    {
+                      "key": "by_type",
+                      "value": "micro"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "50"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "asc:name"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"ae7b3174-8be8-4d53-a3a5-9b8240970eea\",\n    \"name\": \"Dogfish Head Craft Brewery\",\n    \"brewery_type\": \"micro\",\n    \"address_1\": \"6 Cannery Village Center\",\n    \"address_2\": null,\n    \"address_3\": null,\n    \"city\": \"Milton\",\n    \"state_province\": \"Delaware\",\n    \"postal_code\": \"19968-1674\",\n    \"country\": \"United States\",\n    \"longitude\": -75.1241,\n    \"latitude\": 38.9974,\n    \"phone\": \"3026843156\",\n    \"website_url\": \"https://www.dogfish.com\",\n    \"state\": \"Delaware\",\n    \"street\": \"6 Cannery Village Center\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bcf4ca5c-4302-438c-b4f2-c62590de09ba",
+          "name": "Get Brewery",
+          "request": {
+            "name": "Get Brewery",
+            "description": {
+              "content": "Get full details of a single brewery by its Open Brewery DB ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "breweries",
+                ":obdb-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "obdb-id",
+                  "description": "(Required) The unique Open Brewery DB ID for the brewery."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9b953d63-49e6-495d-9559-58c032308990",
+              "name": "Full brewery record.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "breweries",
+                    ":obdb-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "obdb-id",
+                      "description": "(Required) The unique Open Brewery DB ID for the brewery."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"b54b16e1-ac3b-4bff-a11f-f7ae9ddc27e0\",\n  \"name\": \"MadTree Brewing 2.0\",\n  \"brewery_type\": \"regional\",\n  \"address_1\": \"5164 Kennedy Ave\",\n  \"address_2\": null,\n  \"address_3\": null,\n  \"city\": \"Cincinnati\",\n  \"state_province\": \"Ohio\",\n  \"postal_code\": \"45213-1566\",\n  \"country\": \"United States\",\n  \"longitude\": -84.4154,\n  \"latitude\": 39.1776,\n  \"phone\": \"5138368733\",\n  \"website_url\": \"https://madtreebrewing.com\",\n  \"state\": \"Ohio\",\n  \"street\": \"5164 Kennedy Ave\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cef1eafa-fcb2-4793-803e-f19d2c82f2db",
+              "name": "Brewery not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "breweries",
+                    ":obdb-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "obdb-id",
+                      "description": "(Required) The unique Open Brewery DB ID for the brewery."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "146121a6-a4d6-45cf-8533-96d70a9f2778",
+          "name": "Get Random Brewery",
+          "request": {
+            "name": "Get Random Brewery",
+            "description": {
+              "content": "Returns one or more random brewery records. Use the size parameter to request multiple random breweries at once (max 50).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "breweries",
+                "random"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "1",
+                  "description": "Number of random breweries to return (default 1, max 50)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e88f304a-0474-45a5-90a2-43080ff95500",
+              "name": "One or more random brewery records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "breweries",
+                    "random"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "size",
+                      "value": "3"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"ae7b3174-8be8-4d53-a3a5-9b8240970eea\",\n    \"name\": \"Dogfish Head Craft Brewery\",\n    \"brewery_type\": \"micro\",\n    \"address_1\": \"6 Cannery Village Center\",\n    \"address_2\": null,\n    \"address_3\": null,\n    \"city\": \"Milton\",\n    \"state_province\": \"Delaware\",\n    \"postal_code\": \"19968-1674\",\n    \"country\": \"United States\",\n    \"longitude\": -75.1241,\n    \"latitude\": 38.9974,\n    \"phone\": \"3026843156\",\n    \"website_url\": \"https://www.dogfish.com\",\n    \"state\": \"Delaware\",\n    \"street\": \"6 Cannery Village Center\"\n  },\n  {\n    \"id\": \"ae7b3174-8be8-4d53-a3a5-9b8240970eea\",\n    \"name\": \"Dogfish Head Craft Brewery\",\n    \"brewery_type\": \"micro\",\n    \"address_1\": \"6 Cannery Village Center\",\n    \"address_2\": null,\n    \"address_3\": null,\n    \"city\": \"Milton\",\n    \"state_province\": \"Delaware\",\n    \"postal_code\": \"19968-1674\",\n    \"country\": \"United States\",\n    \"longitude\": -75.1241,\n    \"latitude\": 38.9974,\n    \"phone\": \"3026843156\",\n    \"website_url\": \"https://www.dogfish.com\",\n    \"state\": \"Delaware\",\n    \"street\": \"6 Cannery Village Center\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c7dc6e60-e401-4369-95ca-cd4576452b35",
+          "name": "Search Breweries",
+          "request": {
+            "name": "Search Breweries",
+            "description": {
+              "content": "Full-text search across brewery names and other text fields. Returns breweries matching the query term. Results are paginated.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "breweries",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "(Required) Search term to match against brewery names and other text fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "50",
+                  "description": "Number of results per page (default 50, max 200)."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for pagination (1-indexed)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cf344655-7265-4f3d-981a-7eaabbb96e5f",
+              "name": "Search results as a list of brewery records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "breweries",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "dog"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "10"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"ae7b3174-8be8-4d53-a3a5-9b8240970eea\",\n    \"name\": \"Dogfish Head Craft Brewery\",\n    \"brewery_type\": \"micro\",\n    \"address_1\": \"6 Cannery Village Center\",\n    \"address_2\": null,\n    \"address_3\": null,\n    \"city\": \"Milton\",\n    \"state_province\": \"Delaware\",\n    \"postal_code\": \"19968-1674\",\n    \"country\": \"United States\",\n    \"longitude\": -75.1241,\n    \"latitude\": 38.9974,\n    \"phone\": \"3026843156\",\n    \"website_url\": \"https://www.dogfish.com\",\n    \"state\": \"Delaware\",\n    \"street\": \"6 Cannery Village Center\"\n  },\n  {\n    \"id\": \"ae7b3174-8be8-4d53-a3a5-9b8240970eea\",\n    \"name\": \"Dogfish Head Craft Brewery\",\n    \"brewery_type\": \"micro\",\n    \"address_1\": \"6 Cannery Village Center\",\n    \"address_2\": null,\n    \"address_3\": null,\n    \"city\": \"Milton\",\n    \"state_province\": \"Delaware\",\n    \"postal_code\": \"19968-1674\",\n    \"country\": \"United States\",\n    \"longitude\": -75.1241,\n    \"latitude\": 38.9974,\n    \"phone\": \"3026843156\",\n    \"website_url\": \"https://www.dogfish.com\",\n    \"state\": \"Delaware\",\n    \"street\": \"6 Cannery Village Center\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0c2034c6-6b93-4f31-b870-18f794d1f37b",
+          "name": "Autocomplete Breweries",
+          "request": {
+            "name": "Autocomplete Breweries",
+            "description": {
+              "content": "Returns a lightweight list of brewery IDs and names matching the query. Optimized for use in autocomplete/typeahead UI components. Returns up to 15 results.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "breweries",
+                "autocomplete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "(Required) Search term to match against brewery names."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7cb72750-a399-4496-aafe-ef8d47e7c263",
+              "name": "List of matching brewery ID and name pairs.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "breweries",
+                    "autocomplete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "dog"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"b54b16e1-ac3b-4bff-a11f-f7ae9ddc27e0\",\n    \"name\": \"Dogfish Head Craft Brewery\"\n  },\n  {\n    \"id\": \"ae7b3174-8be8-4d53-a3a5-9b8240970eea\",\n    \"name\": \"Dog Days Brewing\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9a15dc95-d10b-41d2-a28a-65bc4e1e0877",
+          "name": "Get Breweries Metadata",
+          "request": {
+            "name": "Get Breweries Metadata",
+            "description": {
+              "content": "Returns aggregate metadata about the brewery dataset: total count and breakdowns by state/province, country, and brewery type. Accepts the same filter parameters as the list endpoint to scope the metadata to a subset of breweries.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "breweries",
+                "meta"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "by_city",
+                  "value": "<string>",
+                  "description": "Scope metadata to breweries in this city."
+                },
+                {
+                  "disabled": false,
+                  "key": "by_country",
+                  "value": "<string>",
+                  "description": "Scope metadata to breweries in this country."
+                },
+                {
+                  "disabled": false,
+                  "key": "by_name",
+                  "value": "<string>",
+                  "description": "Scope metadata to breweries matching this name."
+                },
+                {
+                  "disabled": false,
+                  "key": "by_state",
+                  "value": "<string>",
+                  "description": "Scope metadata to breweries in this state or province."
+                },
+                {
+                  "disabled": false,
+                  "key": "by_postal",
+                  "value": "<string>",
+                  "description": "Scope metadata to breweries with this postal code."
+                },
+                {
+                  "disabled": false,
+                  "key": "by_type",
+                  "value": "<string>",
+                  "description": "Scope metadata to breweries of this type."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "463ec3bc-b585-40bf-8786-925814318d42",
+              "name": "Metadata and aggregate counts for the brewery dataset.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "breweries",
+                    "meta"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "by_city",
+                      "value": "Portland"
+                    },
+                    {
+                      "key": "by_country",
+                      "value": "United States"
+                    },
+                    {
+                      "key": "by_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "by_state",
+                      "value": "Oregon"
+                    },
+                    {
+                      "key": "by_postal",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "by_type",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 11744,\n  \"page\": 1,\n  \"per_page\": 50,\n  \"by_state\": {\n    \"California\": 919,\n    \"Texas\": 352,\n    \"Washington\": 529\n  },\n  \"by_country\": {\n    \"United States\": 8200,\n    \"Germany\": 1449,\n    \"Belgium\": 478\n  },\n  \"by_type\": {\n    \"micro\": 5788,\n    \"brewpub\": 3910,\n    \"planning\": 639\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.openbrewerydb.org/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f7212849-4897-45c4-9f54-39b1b8d97296",
+    "name": "Open Brewery DB Breweries API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Open Brewery DB is a free dataset and API with public information on\nbreweries, cideries, brewpubs, and bottleshops. The database contains\n11,000+ entries across 23+ countries and 212+ states and regions.\nNo API key, authentication, or registration is required.\n",
+      "type": "text/plain"
+    }
+  }
+}

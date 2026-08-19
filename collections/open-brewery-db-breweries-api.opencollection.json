@@ -1,0 +1,234 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Open Brewery DB Breweries API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Breweries",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Breweries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openbrewerydb.org/v1/breweries",
+            "params": [
+              {
+                "name": "by_city",
+                "value": "San Diego",
+                "type": "query",
+                "description": "Filter by city name (case-insensitive)."
+              },
+              {
+                "name": "by_country",
+                "value": "United States",
+                "type": "query",
+                "description": "Filter by country name (case-insensitive)."
+              },
+              {
+                "name": "by_dist",
+                "value": "38.8977,−77.0365",
+                "type": "query",
+                "description": "Filter by geographic distance from a lat,lng point. Format: \"lat,lng\". Returns results sorted by distance ascending."
+              },
+              {
+                "name": "by_ids",
+                "value": "b54b16e1-ac3b-4bff-a11f-f7ae9ddc27e0,5494659b-aece-42a4-b7b1-b5a98cf12e40",
+                "type": "query",
+                "description": "Filter by a comma-separated list of brewery IDs."
+              },
+              {
+                "name": "by_name",
+                "value": "Dogfish",
+                "type": "query",
+                "description": "Filter by brewery name (case-insensitive partial match)."
+              },
+              {
+                "name": "by_state",
+                "value": "California",
+                "type": "query",
+                "description": "Filter by state or province name (no abbreviations)."
+              },
+              {
+                "name": "by_postal",
+                "value": "44107",
+                "type": "query",
+                "description": "Filter by postal code (US ZIP codes and international)."
+              },
+              {
+                "name": "by_type",
+                "value": "micro",
+                "type": "query",
+                "description": "Filter by brewery type."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "Page number for pagination (1-indexed)."
+              },
+              {
+                "name": "per_page",
+                "value": "50",
+                "type": "query",
+                "description": "Number of breweries per page (default 50, max 200)."
+              },
+              {
+                "name": "sort",
+                "value": "asc:name",
+                "type": "query",
+                "description": "Sort results by one or more fields. Prefix with \"asc:\" or \"desc:\" to control direction. Multiple fields separated by commas."
+              }
+            ]
+          },
+          "docs": "Returns a list of breweries. Supports filtering by city, state, country, type, postal code, name, IDs, and geographic distance. Results are paginated; default page size is 50, maximum is 200. Results can be sorted by one or more fields."
+        },
+        {
+          "info": {
+            "name": "Get Brewery",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openbrewerydb.org/v1/breweries/:obdb-id",
+            "params": [
+              {
+                "name": "obdb-id",
+                "value": "b54b16e1-ac3b-4bff-a11f-f7ae9ddc27e0",
+                "type": "path",
+                "description": "The unique Open Brewery DB ID for the brewery."
+              }
+            ]
+          },
+          "docs": "Get full details of a single brewery by its Open Brewery DB ID."
+        },
+        {
+          "info": {
+            "name": "Get Random Brewery",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openbrewerydb.org/v1/breweries/random",
+            "params": [
+              {
+                "name": "size",
+                "value": "3",
+                "type": "query",
+                "description": "Number of random breweries to return (default 1, max 50)."
+              }
+            ]
+          },
+          "docs": "Returns one or more random brewery records. Use the size parameter to request multiple random breweries at once (max 50)."
+        },
+        {
+          "info": {
+            "name": "Search Breweries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openbrewerydb.org/v1/breweries/search",
+            "params": [
+              {
+                "name": "query",
+                "value": "dog",
+                "type": "query",
+                "description": "Search term to match against brewery names and other text fields."
+              },
+              {
+                "name": "per_page",
+                "value": "10",
+                "type": "query",
+                "description": "Number of results per page (default 50, max 200)."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "Page number for pagination (1-indexed)."
+              }
+            ]
+          },
+          "docs": "Full-text search across brewery names and other text fields. Returns breweries matching the query term. Results are paginated."
+        },
+        {
+          "info": {
+            "name": "Autocomplete Breweries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openbrewerydb.org/v1/breweries/autocomplete",
+            "params": [
+              {
+                "name": "query",
+                "value": "dog",
+                "type": "query",
+                "description": "Search term to match against brewery names."
+              }
+            ]
+          },
+          "docs": "Returns a lightweight list of brewery IDs and names matching the query. Optimized for use in autocomplete/typeahead UI components. Returns up to 15 results."
+        },
+        {
+          "info": {
+            "name": "Get Breweries Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openbrewerydb.org/v1/breweries/meta",
+            "params": [
+              {
+                "name": "by_city",
+                "value": "Portland",
+                "type": "query",
+                "description": "Scope metadata to breweries in this city."
+              },
+              {
+                "name": "by_country",
+                "value": "United States",
+                "type": "query",
+                "description": "Scope metadata to breweries in this country."
+              },
+              {
+                "name": "by_name",
+                "value": "",
+                "type": "query",
+                "description": "Scope metadata to breweries matching this name."
+              },
+              {
+                "name": "by_state",
+                "value": "Oregon",
+                "type": "query",
+                "description": "Scope metadata to breweries in this state or province."
+              },
+              {
+                "name": "by_postal",
+                "value": "",
+                "type": "query",
+                "description": "Scope metadata to breweries with this postal code."
+              },
+              {
+                "name": "by_type",
+                "value": "",
+                "type": "query",
+                "description": "Scope metadata to breweries of this type."
+              }
+            ]
+          },
+          "docs": "Returns aggregate metadata about the brewery dataset: total count and breakdowns by state/province, country, and brewery type. Accepts the same filter parameters as the list endpoint to scope the metadata to a subset of breweries."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

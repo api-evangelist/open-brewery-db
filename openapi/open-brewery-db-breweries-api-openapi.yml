@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Open Brewery DB Breweries API
   description: 'Open Brewery DB is a free dataset and API with public information on
@@ -7,9 +7,7 @@ info:
 
     11,000+ entries across 23+ countries and 212+ states and regions.
 
-    No API key, authentication, or registration is required.
-
-    '
+    No API key, authentication, or registration is required.'
   version: 1.0.0
   contact:
     url: https://www.openbrewerydb.org/
@@ -358,19 +356,6 @@ paths:
       - Breweries
 components:
   schemas:
-    BreweryAutocomplete:
-      type: object
-      description: Abbreviated brewery record returned by autocomplete endpoint.
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Unique identifier for the brewery.
-          example: ae7b3174-8be8-4d53-a3a5-9b8240970eea
-        name:
-          type: string
-          description: Name of the brewery.
-          example: Dogfish Head Craft Brewery
     Brewery:
       type: object
       description: A brewery, cidery, brewpub, or bottleshop record.
@@ -469,6 +454,19 @@ components:
           deprecated: true
           description: Deprecated. Use address_1 instead.
           example: 6 Cannery Village Center
+    BreweryAutocomplete:
+      type: object
+      description: Abbreviated brewery record returned by autocomplete endpoint.
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the brewery.
+          example: ae7b3174-8be8-4d53-a3a5-9b8240970eea
+        name:
+          type: string
+          description: Name of the brewery.
+          example: Dogfish Head Craft Brewery
     BreweryMeta:
       type: object
       description: Metadata and aggregate counts about the brewery dataset.

@@ -16,12 +16,17 @@ deployment:
 tools_count: 4
 tools:
 - name: list-breweries
-  description: ''
+  description: Browse the Open Brewery DB dataset using location, type, name, ID, and distance filters.
+    Results are paginated and may be sorted by an allow-listed field.
 - name: get-brewery
-  description: ''
+  description: Retrieve one brewery from Open Brewery DB by its UUID.
 - name: search-breweries
-  description: ''
+  description: Full-text search Open Brewery DB. Use this for free-form brewery name searches; use list-breweries
+    for structured filters.
 - name: get-brewery-metadata
-  description: ''
+  description: Count breweries in Open Brewery DB and group the results by state or province, country,
+    and brewery type. The same filters as list-breweries may be applied.
 tools_source: live tools/list via initialize handshake, 2026-09-11 (signals/audit_mcp_authorship.py --probe)
 authorship: provider
+descriptions_source: live tools/list (authorship probe or saved capture); filled by backfill-tools-from-authorship.py
+  --descriptions, 2026-09-28

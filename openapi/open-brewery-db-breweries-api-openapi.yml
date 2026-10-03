@@ -356,50 +356,6 @@ paths:
       - Breweries
 components:
   schemas:
-    BreweryAutocomplete:
-      type: object
-      description: Abbreviated brewery record returned by autocomplete endpoint.
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Unique identifier for the brewery.
-          example: ae7b3174-8be8-4d53-a3a5-9b8240970eea
-        name:
-          type: string
-          description: Name of the brewery.
-          example: Dogfish Head Craft Brewery
-    BreweryMeta:
-      type: object
-      description: Metadata and aggregate counts about the brewery dataset.
-      properties:
-        total:
-          type: integer
-          description: Total number of brewery records.
-          example: 11744
-        page:
-          type: integer
-          description: Current page number.
-          example: 1
-        per_page:
-          type: integer
-          description: Number of records per page.
-          example: 50
-        by_state:
-          type: object
-          description: Count of breweries by state or province.
-          additionalProperties:
-            type: integer
-        by_country:
-          type: object
-          description: Count of breweries by country.
-          additionalProperties:
-            type: integer
-        by_type:
-          type: object
-          description: Count of breweries by brewery type.
-          additionalProperties:
-            type: integer
     Brewery:
       type: object
       description: A brewery, cidery, brewpub, or bottleshop record.
@@ -498,3 +454,47 @@ components:
           deprecated: true
           description: Deprecated. Use address_1 instead.
           example: 6 Cannery Village Center
+    BreweryMeta:
+      type: object
+      description: Metadata and aggregate counts about the brewery dataset.
+      properties:
+        total:
+          type: integer
+          description: Total number of brewery records.
+          example: 11744
+        page:
+          type: integer
+          description: Current page number.
+          example: 1
+        per_page:
+          type: integer
+          description: Number of records per page.
+          example: 50
+        by_state:
+          type: object
+          description: Count of breweries by state or province.
+          additionalProperties:
+            type: integer
+        by_country:
+          type: object
+          description: Count of breweries by country.
+          additionalProperties:
+            type: integer
+        by_type:
+          type: object
+          description: Count of breweries by brewery type.
+          additionalProperties:
+            type: integer
+    BreweryAutocomplete:
+      type: object
+      description: Abbreviated brewery record returned by autocomplete endpoint.
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the brewery.
+          example: ae7b3174-8be8-4d53-a3a5-9b8240970eea
+        name:
+          type: string
+          description: Name of the brewery.
+          example: Dogfish Head Craft Brewery

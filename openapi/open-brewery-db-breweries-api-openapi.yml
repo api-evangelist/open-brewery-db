@@ -356,6 +356,19 @@ paths:
       - Breweries
 components:
   schemas:
+    BreweryAutocomplete:
+      type: object
+      description: Abbreviated brewery record returned by autocomplete endpoint.
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the brewery.
+          example: ae7b3174-8be8-4d53-a3a5-9b8240970eea
+        name:
+          type: string
+          description: Name of the brewery.
+          example: Dogfish Head Craft Brewery
     Brewery:
       type: object
       description: A brewery, cidery, brewpub, or bottleshop record.
@@ -485,16 +498,3 @@ components:
           description: Count of breweries by brewery type.
           additionalProperties:
             type: integer
-    BreweryAutocomplete:
-      type: object
-      description: Abbreviated brewery record returned by autocomplete endpoint.
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Unique identifier for the brewery.
-          example: ae7b3174-8be8-4d53-a3a5-9b8240970eea
-        name:
-          type: string
-          description: Name of the brewery.
-          example: Dogfish Head Craft Brewery

@@ -1,4 +1,4 @@
-# Open Brewery DB (open-brewery-db)
+# Open Brewery DB
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,56 +64,159 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Open Brewery DB is a comprehensive database that provides information on breweries and taprooms from around the world. It includes details such as location, contact information, beer offerings, and more, making it a valuable resource for beer enthusiasts and industry professionals alike. Users can search and explore the database to discover new breweries, keep track of their favorite spots, and stay up to date on the latest beer trends.
+Open Brewery DB is a free and open-source REST API providing public information on breweries, cideries, brewpubs, and bottleshops worldwide. The database contains 11,000+ entries across 23+ countries and 212+ states and regions. No API key, authentication, or registration is required. Data includes brewery name, type, address, city, state, country, coordinates, phone, and website. The API processes over 720,000 requests per week and bulk dataset downloads are available in CSV, JSON, and SQL formats.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/open-brewery-db/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/open-brewery-db/refs/heads/main/apis.yml)
+**Areas:** Beer · Bottle Shops · Brew Pubs · Breweries · Cider
 
-## Scope
+## Open Brewery DB on APIs.io
 
-- **Position:** Consuming
-- **Access:** 3rd-Party
+Everything profiled for Open Brewery DB is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/open-brewery-db/](https://apis.io/providers/open-brewery-db/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (1)
 
-- Beer
-- Bottle Shops
-- Brew Pubs
-- Breweries
-- Cider
+- [Open Brewery DB Breweries API](https://apis.io/apis/open-brewery-db/open-brewery-db-breweries-api/) — Brewery listing, retrieval, search, autocomplete, and metadata operations.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2024-11-13
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### MCP servers (1)
 
-### Open Brewery DB
+Model Context Protocol servers that expose the API to agents.
 
-Open Brewery DB is a free dataset and API with public information on breweries, cideries, brewpubs, and bottleshops.
+- [open-brewery-db](https://apis.io/servers/open-brewery-db/open-brewery-db/)
 
-- **Human URL:** [ https://www.openbrewerydb.org/]( https://www.openbrewerydb.org/)
+#### Agentic access (1)
 
-#### Tags
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- Autocomplete
-- Meta
-- Obdb
-- Random
-- Search
+- [Open Brewery Db Agentic Access](https://apis.io/agentic-access/open-brewery-db/open-brewery-db-agentic-access/)
 
-#### Properties
+#### JSON Schema (2)
 
-- [Documentation]( https://www.openbrewerydb.org/)
-- [OpenAPI](openapi/open-brewery-db-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/open-brewery-db.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/open-brewery-db.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+The data models the API reads and writes.
 
-## Common Properties
+- [Brewery](https://apis.io/schemas/open-brewery-db/brewery/)
+- [BreweryMeta](https://apis.io/schemas/open-brewery-db/brewery-meta/)
 
-- [GitHub Organization](https://github.com/openbrewerydb)
+#### JSON-LD (2)
 
-## Maintainers
+Linked-data contexts for the provider's vocabulary.
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+- [Brewery Context](https://apis.io/jsonld/open-brewery-db/brewery-context/)
+- [Brewery Example Context](https://apis.io/jsonld/open-brewery-db/brewery-example/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Open Brewery Db Vocabulary](https://apis.io/vocabularies/open-brewery-db/open-brewery-db-vocabulary/)
+
+#### Examples (2)
+
+Example requests and responses.
+
+- [Brewery Meta](https://apis.io/examples/open-brewery-db/brewery-meta/)
+- [Brewery Single](https://apis.io/examples/open-brewery-db/brewery-single/)
+
+#### Collections (2)
+
+Postman and Open Collection request collections.
+
+- [Open Brewery DB](https://apis.io/collections/open-brewery-db/open-open-brewery-db/)
+- [Open Brewery DB Breweries API](https://apis.io/collections/open-brewery-db/open-open-brewery-db-breweries-api/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Open Brewery DB — jsonschema rules](https://apis.io/rules/open-brewery-db/open-brewery-db-jsonschema-spectral-rules/)
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Open Brewery Db Domain Security](https://apis.io/security/open-brewery-db/open-brewery-db-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Open Brewery Db Plans Pricing](https://apis.io/plans/open-brewery-db/open-brewery-db-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Open Brewery Db Rate Limits](https://apis.io/rate-limits/open-brewery-db/open-brewery-db-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Open Brewery Db Finops](https://apis.io/finops/open-brewery-db/open-brewery-db-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.openbrewerydb.org/)
+- [Documentation](https://www.openbrewerydb.org/documentation)
+- [Pricing](https://www.openbrewerydb.org/)
+- [Blog](https://www.openbrewerydb.org/news)
+- [GitHub](https://github.com/openbrewerydb)
+
+## API Evangelist rating
+
+**Kin Score 25.6** — emerging · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 60.0 |
+| Contract quality | 52.6 |
+| Contract governance | 9.8 |
+| Operational transparency | 2.6 |
+| Developer ergonomics | 11.9 |
+| Access clarity | 15.8 |
+
+**Agent readiness 37.9** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | verified |
+| Auth Clarity | — |
+| Idempotency | na |
+| Error Semantics | — |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | partial |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 10.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/open-brewery-db/](https://apis.io/providers/open-brewery-db/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Open Brewery DB: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/open-brewery-db/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
